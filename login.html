@@ -96,6 +96,12 @@
     .register-link a:hover {
       text-decoration: underline;
     }
+    .error-message {
+      color: #d9534f;
+      margin-bottom: 1rem;
+      display: none;
+      font-weight: 600;
+    }
     @media (max-width: 480px) {
       .login-container {
         padding: 1.5rem;
@@ -107,7 +113,9 @@
 <body>
   <div class="login-container" role="main" aria-labelledby="login-title">
     <h2 id="login-title">Masuk ke Atur Aja</h2>
-    <form action="#" method="POST" aria-describedby="login-desc">
+    <form id="loginForm" aria-describedby="login-desc" novalidate>
+      <div class="error-message" id="errorMessage" role="alert" aria-live="assertive"></div>
+
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required autocomplete="username" aria-required="true" />
 
@@ -126,5 +134,42 @@
       Belum punya akun? <a href="register.html">Daftar di sini</a>
     </p>
   </div>
+
+  <script src="main.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const errorMessageEl = document.getElementById('errorMessage');
+      errorMessageEl.style.display = 'none';
+      errorMessageEl.textContent = '';
+
+      const username = this.username.value.trim();
+      const password = this.password.value;
+
+      if (!username) {
+        errorMessageEl.textContent = 'Mohon masukkan username.';
+        errorMessageEl.style.display = 'block';
+        this.username.focus();
+        return;
+      }
+      if (!password) {
+        errorMessageEl.textContent = 'Mohon masukkan password.';
+        errorMessageEl.style.display = 'block';
+        this.password.focus();
+        return;
+      }
+
+      // Call loginUser function from main.js
+      const success = loginUser(username, password);
+      if (success) {
+        // Redirect to dashboard after successful login
+        window.location.href = 'dashboard.html';
+      } else {
+        errorMessageEl.textContent = 'Username atau password salah.';
+        errorMessageEl.style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>
