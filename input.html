@@ -201,43 +201,4 @@
       inputPrice.setAttribute('aria-label', 'Harga Beli Bahan Baku');
 
       // Input Stok
-      const inputStock = document.createElement('input');
-      inputStock.type = 'number';
-      inputStock.name = 'materialStock';
-      inputStock.placeholder = 'Stok (Jumlah)';
-      inputStock.min = '0';
-      inputStock.step = '1';
-      inputStock.value = stock;
-      inputStock.required = true;
-      inputStock.setAttribute('aria-label', 'Stok Bahan Baku');
-
-      // Tombol Hapus Baris
-      const removeBtn = document.createElement('button');
-      removeBtn.type = 'button';
-      removeBtn.className = 'remove-btn';
-      removeBtn.setAttribute('aria-label', 'Hapus Bahan Baku');
-      removeBtn.textContent = '×';
-      removeBtn.addEventListener('click', () => {
-        div.remove();
-      });
-
-      // Menambahkan elemen ke div baris
-      div.appendChild(inputName);
-      div.appendChild(inputPrice);
-      div.appendChild(inputStock);
-      div.appendChild(removeBtn);
-
-      return div;
-    }
-
-    // Tambah baris input baru saat tombol ditekan
-    addBahanBtn.addEventListener('click', () => {
-      const newRow = createBahanRow();
-      bahanBakuList.appendChild(newRow);
-    });
-
-    // Inisialisasi dengan satu baris input bahan baku
-    bahanBakuList.appendChild(createBahanRow());
-
-    // Fungsi update opsi bahan baku di form produk
-    function
+      const inputStock = document.create
