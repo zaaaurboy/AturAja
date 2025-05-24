@@ -319,3 +319,24 @@ textarea:disabled {
   color: #721c24;
   border: 1px solid #f5c6cb;
 }
+
+.bahan-baku-row {
+  margin-bottom: 10px;
+}
+
+.bahan-baku-row input {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.removeBahanBtn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.removeBahanBtn:hover {
+  background-color: #cc0000;
+}
